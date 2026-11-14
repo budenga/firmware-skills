@@ -1,0 +1,13 @@
+{
+  "name": "firmware-skills",
+  "version": "1.0.0",
+  "description": "Skills and agents for C/C++ microcontroller firmware: STM32 (CubeMX/HAL, PlatformIO), ESP32 (PlatformIO Arduino/ESP-IDF), PIC & dsPIC33 (MPLAB X/XC/MCC) — coding standards, architecture, unit testing, code/architecture review, crash analysis, datasheet research, flashing and optimization.",
+  "author": {
+    "name": "Filipe Lopes",
+    "url": "https://github.com/budenga"
+  },
+  "homepage": "https://github.com/budenga/firmware-skills",
+  "repository": "https://github.com/budenga/firmware-skills",
+  "license": "MIT",
+  "keywords": ["embedded", "firmware", "stm32", "esp32", "pic", "dspic", "platformio", "microcontroller"]
+}

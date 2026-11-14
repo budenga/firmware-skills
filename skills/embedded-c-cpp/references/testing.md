@@ -97,6 +97,11 @@ For on-target tests with the Arduino framework, the test file uses `setup()` (ru
 
 The `native` platform needs a host C compiler: on macOS install the Xcode Command Line Tools (`xcode-select --install`).
 
+Practical notes for `pio test -e native`:
+- Sanitizers: UndefinedBehaviorSanitizer works (`build_flags = -fsanitize=undefined -fno-sanitize-recover=undefined`, plus the same flag at link time, e.g. via an `extra_scripts` pre-script that appends to `LINKFLAGS`). AddressSanitizer can crash at start-up under the PlatformIO native runner on macOS — use ASan in the CMake harness instead (§4).
+- When tests fail, PlatformIO may report the run as `ERRORED` / `SIGINT`; run `.pio/build/native/program` directly to see the plain Unity summary.
+- C headers included from C++ (Arduino `.cpp` files) need `#ifdef __cplusplus extern "C" { ... } #endif` guards, or the link fails with mangled-name errors.
+
 ## 4. CMake + Unity on the PC (CubeMX, MPLAB X)
 
 CubeIDE and MPLAB X builds are for the target. Add a separate host test build next to them:
