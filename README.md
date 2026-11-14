@@ -40,3 +40,7 @@ The skills tell the agent to ask before flashing, erasing, or changing irreversi
 ## Contributing
 
 Each skill is a folder with a `SKILL.md` (frontmatter `name` + `description`, then instructions) and optional `references/` files loaded on demand. Corrections with a source (datasheet, reference manual, vendor docs) are welcome.
+
+## License
+
+[MIT](LICENSE)
