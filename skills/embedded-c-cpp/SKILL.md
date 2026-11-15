@@ -1,6 +1,6 @@
 ---
 name: embedded-c-cpp
-description: Industry-grade C and C++ practice for microcontroller firmware (STM32, ESP32, PIC, any MCU) — coding standards (MISRA C, CERT C, Barr), embedded C++ subset, firmware architecture (layers, HAL/BSP, state machines, ISRs, concurrency), host-based unit testing with Unity, static analysis, systematic debugging, and size/speed/power optimization. Use this skill whenever writing, reviewing, refactoring, testing, debugging or optimizing C/C++ that runs on a microcontroller or bare-metal/RTOS target, even when the user only says "firmware", "driver", "ISR", "interrupt", "embedded", "placa", "microcontrolador", or names a chip. Load it alongside the chip-specific skill (stm32-firmware, esp32-firmware, pic-firmware) — this one holds the cross-platform rules, those hold the toolchain specifics.
+description: Industry-grade C and C++ practice for microcontroller firmware (STM32, ESP32, PIC, any MCU) — coding standards (MISRA C, CERT C, Barr), embedded C++ subset, firmware architecture (layers, HAL/BSP, state machines, ISRs, concurrency), startup code, linker scripts and bootloaders, host-based unit testing with Unity, static analysis and sanitizers, GDB/OpenOCD and ELF/map analysis, systematic debugging, and size/speed/power optimization. Use this skill whenever writing, reviewing, refactoring, testing, debugging or optimizing C/C++ that runs on a microcontroller or bare-metal/RTOS target, even when the user only says "firmware", "driver", "ISR", "interrupt", "embedded", "placa", "microcontrolador", "linker script", "bootloader", "GDB", or names a chip. Load it alongside the chip-specific skill (stm32-firmware, esp32-firmware, pic-firmware) — this one holds the cross-platform rules, those hold the toolchain specifics.
 ---
 
 # Embedded C / C++ (cross-platform base)
@@ -39,6 +39,7 @@ Pin down the context, because the right answer depends on it. If something below
 8. **Respect code generators.** CubeMX keeps only `/* USER CODE BEGIN */ ... /* USER CODE END */`; MCC overwrites `mcc_generated_files/`. Put real logic in your own files and call it from the allowed spots, otherwise the next regeneration silently deletes it.
 9. **Watchdog on, reset cause logged.** In the field the watchdog is the last line of defence, and the reset reason (watchdog, brown-out, power-on, software) is often the only clue to a rare crash.
 10. **Warnings are bugs.** Build with high warning levels and fix them, don't silence them.
+11. **Verify the memory map, don't assume it.** After touching a linker script, startup file, bootloader offset or section attribute, check the map file / `objdump -h` that each section landed where intended. The linker only reports overflow; misplaced vectors, `.data` or no-init RAM link without a word and fail at run time.
 
 ## Workflow by task type
 
@@ -59,6 +60,9 @@ Pin down the context, because the right answer depends on it. If something below
 | `references/testing.md` | Adding unit tests, making code testable, PlatformIO `pio test`, testing CubeMX/MPLAB code on a PC, CI, static analysis |
 | `references/debugging.md` | Crashes, hard faults, resets, hangs, timing bugs, peripheral not working |
 | `references/optimization.md` | Code too big, too slow, too much RAM, battery life |
+| `references/startup-linker-bootloaders.md` | Reset/vector table, startup code, writing or changing a linker script, placing code/data (no-init RAM, RAM functions, CCM/DTCM, reserved flash), bootloader design, jump to application, image header, A/B and rollback |
+| `references/debug-tools.md` | GDB and OpenOCD in depth (breakpoints, watchpoints, SVD registers, RTT, semihosting), ELF/map analysis, cppcheck/MISRA addon, clang-tidy, `-fanalyzer`, sanitizers, which tool runs where in CI |
+| `references/rtos-design.md` | Using an RTOS (FreeRTOS, CMSIS-RTOS2; Zephyr/ThreadX mapping): task decomposition and priorities, priority inversion and mutexes, ISR→task with FromISR/notifications and Cortex-M interrupt priorities, delays and software timers, static allocation and stack sizing, per-task watchdog supervisor, shared buses, RTOS debugging |
 
 ## Output expectations
 
@@ -66,3 +70,7 @@ Pin down the context, because the right answer depends on it. If something below
 - State assumptions (clock, pins, part) at the top of the answer when you had to make them.
 - After changes, build. If you could not build or could not test on hardware, say so plainly — "untested on hardware" is useful information, false confidence is not.
 - Do not flash a board, erase flash, or change option bytes / config fuses / eFuses without the user confirming. Some of these (STM32 RDP level 2, ESP32 eFuses, PIC code protection) are permanent.
+
+## Credits
+
+Parts of the startup/linker/bootloader and debug-tools references adapted from mohitmishra786/low-level-dev-skills (MIT License).

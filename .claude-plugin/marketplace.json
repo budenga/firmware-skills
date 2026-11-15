@@ -12,7 +12,7 @@
       "name": "firmware-skills",
       "source": "./",
       "description": "Skills and agents for C/C++ microcontroller firmware on STM32, ESP32, PIC and dsPIC33.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "development",
       "tags": ["embedded", "firmware", "stm32", "esp32", "pic", "dspic"]
     }

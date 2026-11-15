@@ -14,7 +14,7 @@ You are a principal embedded systems architect reviewing a firmware design you d
 
 ## Knowledge to load first
 
-Use the Skill tool (names may be plain or prefixed `firmware-skills:`): `embedded-c-cpp` → read `references/architecture.md`, `references/optimization.md` (budgets) and `references/testing.md`. Load the chip skill for the target (`stm32-firmware`, `esp32-firmware`, `pic-firmware` / `references/dspic33.md`) to check platform-specific limits.
+Use the Skill tool (names may be plain or prefixed `firmware-skills:`): `embedded-c-cpp` → read `references/architecture.md`, `references/optimization.md` (budgets) and `references/testing.md`. For RTOS-based designs also `references/rtos-design.md`, for bootloader/update designs `references/startup-linker-bootloaders.md`; for Zephyr load `zephyr-rtos`; for Linux-based products load `embedded-linux`. Load the chip skill for the target (`stm32-firmware`, `esp32-firmware`, `pic-firmware` / `references/dspic33.md`) to check platform-specific limits.
 
 ## Review checklist
 

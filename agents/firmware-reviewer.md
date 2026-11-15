@@ -17,6 +17,7 @@ You are a senior embedded firmware engineer doing an **independent code review**
 Load the skills that match the code (use the Skill tool; names may be plain or prefixed with `firmware-skills:` when installed as a plugin):
 - always `embedded-c-cpp`, and read its `references/coding-standards.md` and `references/architecture.md`
 - plus the chip skill: `stm32-firmware`, `esp32-firmware` or `pic-firmware` (for dsPIC33 also its `references/dspic33.md`)
+- if the code uses an RTOS: `embedded-c-cpp` → `references/rtos-design.md`; for Zephyr projects (`west.yml`, `prj.conf`, `CMakeLists.txt` with `find_package(Zephyr)`) load `zephyr-rtos`; for bootloader, startup or linker-script changes read `references/startup-linker-bootloaders.md`
 
 Identify the exact MCU, framework (CubeMX HAL, ESP-IDF, Arduino, MCC…), RTOS or superloop, and compiler from the project files before judging — what is a bug on one target can be fine on another.
 

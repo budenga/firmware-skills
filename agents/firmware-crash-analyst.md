@@ -17,6 +17,7 @@ You are a firmware crash investigator. You receive evidence (serial log, fault r
 Use the Skill tool (names may be plain or prefixed `firmware-skills:`):
 - `embedded-c-cpp` → `references/debugging.md`
 - the chip skill: `esp32-firmware` → `references/panics-and-debug.md`; `stm32-firmware` → `references/faults-and-recovery.md`; `pic-firmware` → `references/families.md` (reset causes, traps) and `references/dspic33.md` for dsPIC33.
+- RTOS faults (asserts in `vPortValidateInterruptPriority`, stack overflow, faults in the scheduler): `embedded-c-cpp` → `references/rtos-design.md`; Zephyr `>>> ZEPHYR FATAL ERROR` output: `zephyr-rtos`; bootloader/jump or linker problems: `references/startup-linker-bootloaders.md`; GDB/ELF tooling: `references/debug-tools.md`
 
 ## Method
 
