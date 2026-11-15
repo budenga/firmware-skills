@@ -67,6 +67,10 @@ Programming changes the device: confirm the part and programmer with the user be
 - Random resets: read the reset-cause bits at boot (PCON/PCON0/RCON — `references/families.md`), watchdog not cleared, stack overflow (STKOVF), brown-out.
 - PIC24/dsPIC sudden reset or hang: install trap handlers (`_AddressError`, `_StackError`, `_MathError`, `_OscillatorFail`) — address errors usually mean a misaligned 16-bit access.
 
+## Personal library (optional)
+
+If the user has a personal technical library indexed locally (a `library-researcher` agent is available), delegate to it for PIC/dsPIC Microchip family reference manuals, application notes, XC compiler guides and DSP/motor-control material that go beyond this skill — it answers with document and page citations. Treat older books as background and prefer current vendor documentation for API/toolchain details. Skip if no library is configured.
+
 ## Reference files
 
 | File | Read when |

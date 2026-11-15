@@ -62,6 +62,10 @@ Flashing changes the board: confirm with the user which board/probe is connected
 - Hangs in `SystemClock_Config` → HSE not present/bypass mismatch, wrong PLL, flash latency too low.
 - Peripheral silent → clock enabled? pin AF correct? `MX_xxx_Init` actually called and in the right order (DMA init before the peripheral using it)?
 
+## Personal library (optional)
+
+If the user has a personal technical library indexed locally (a `library-researcher` agent is available), delegate to it for STM32 reference-manual chapters, ST application notes, HAL/LL and timer/DMA/low-power techniques that go beyond this skill — it answers with document and page citations. Treat older books as background and prefer current vendor documentation for API/toolchain details. Skip if no library is configured.
+
 ## Reference files
 
 | File | Read when |

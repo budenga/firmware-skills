@@ -60,6 +60,10 @@ Upload fails with "Failed to connect / Wrong boot mode detected" → hold **BOOT
 
 Paste-able serial output is the key evidence. Enable `monitor_filters = esp32_exception_decoder` and `build_type = debug` so backtraces are decoded to file:line. Then see `references/panics-and-debug.md` for: Guru Meditation types (LoadProhibited, StoreProhibited, IllegalInstruction, Load/Store access fault on RISC-V), stack canary, task/interrupt watchdog, `rst:` codes, brownout, boot loops, JTAG debugging (`debug_tool = esp-builtin` on S3/C3/C6).
 
+## Personal library (optional)
+
+If the user has a personal technical library indexed locally (a `library-researcher` agent is available), delegate to it for ESP32 ESP-IDF/Arduino-ESP32 guides, FreeRTOS, Wi-Fi/BLE and low-power material that go beyond this skill — it answers with document and page citations. Treat older books as background and prefer current vendor documentation for API/toolchain details. Skip if no library is configured.
+
 ## Reference files
 
 | File | Read when |

@@ -12,6 +12,10 @@ This skill is the shared base. For toolchain, flashing and chip quirks, also use
 - ESP32 → `esp32-firmware`
 - PIC16/18/24/32 → `pic-firmware`
 
+## Deeper references (optional personal library)
+
+If the user has a personal technical library indexed locally (a `library-researcher` agent is available, or `~/.config/electronics-skills/library.json` exists), use it when a topic deserves a solid reference beyond this skill — an embedded C/C++ technique, an RTOS pattern, a peripheral explained in a vendor app note, a classic algorithm. Delegate to `library-researcher` (it returns answers with document and page citations) instead of reading large PDFs in the main conversation. Prefer current vendor documentation over older books for toolchain/API details. If no library is configured, skip this.
+
 ## Before writing code
 
 Pin down the context, because the right answer depends on it. If something below matters for the task and is unknown, read the project to find it; ask only if the project cannot tell you.
